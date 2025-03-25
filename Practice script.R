@@ -1,0 +1,6 @@
+print("Hello,RStudio!")
+head(mtcars)
+str(mtcars)
+summary(mtcars)
+setwd("C:/Users/LENOVO/Documents")
+getwd()
