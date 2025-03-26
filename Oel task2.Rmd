@@ -1,0 +1,57 @@
+---
+title: "Climate Change Analysis Report"
+author: "Fatima Zulfiqar"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: cerulean
+---
+
+## Introduction
+This document analyzes global temperature change using R. It includes data visualization with ggplot2.
+
+## Load Required Libraries
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Install and load necessary packages
+if(!require(ggplot2)) install.packages("ggplot2", dependencies=TRUE)
+library(ggplot2)
+if(!require(readr)) install.packages("readr", dependencies=TRUE)
+library(readr)
+```
+
+## Load Dataset
+
+```{r load_data, echo=TRUE}
+# Load dataset
+data <- read_csv("C:/Users/Dell/Downloads/Climate change/GlobalTemperatures.csv")
+
+# Show first 5 rows
+head(data, 5)
+```
+
+## Line Chart: Global Temperature Change Over Time
+
+```{r line_chart, echo=TRUE}
+# Convert date column to Date format
+data$dt <- as.Date(data$dt)
+
+# Remove missing values
+data <- na.omit(data)
+
+# Plot temperature change over time
+ggplot(data, aes(x = dt, y = LandAverageTemperature)) +
+  geom_line(color = "blue") +
+  labs(title = "Global Temperature Change Over Time", x = "Year", y = "Temperature (°C)")
+
+ggsave("temperature_trend.png")
+```
+
+## Conclusion
+
+This analysis includes data visualization of global temperature trends to understand climate change patterns.
