@@ -1,0 +1,59 @@
+---
+title: "Analysis Report"
+author: "Fatima Zulfiqar"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: cerulean
+---
+
+## Introduction
+This document performs basic analysis of the World Happiness Report 2024 dataset in R, including data loading, summary statistics, missing value identification, and saving the cleaned dataset.
+
+## Load Required Libraries
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# Install and load necessary packages
+if(!require(readr)) install.packages("readr", dependencies=TRUE)
+library(readr)
+```
+
+## Load Dataset
+
+```{r load_data, echo=TRUE}
+# Load dataset
+data <- read_csv("C:/Users/Dell/Downloads/World happiness report/WHR2024.csv")
+
+# Show first 5 rows
+head(data, 5)
+```
+
+## Summary Statistics
+
+```{r summary_stats, echo=TRUE}
+# Display summary statistics
+summary(data)
+```
+
+## Identify Missing Values
+
+```{r missing_values, echo=TRUE}
+# Count missing values in each column
+colSums(is.na(data))
+```
+
+## Save Cleaned Data
+
+```{r save_data, echo=TRUE}
+# Save cleaned dataset
+write.csv(data, "cleaned_happiness.csv", row.names = FALSE)
+```
+
+## Conclusion
+
+This analysis includes data loading, summary statistics, missing value detection, and saving the cleaned dataset for further analysis.
